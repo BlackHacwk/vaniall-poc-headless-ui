@@ -1,3 +1,30 @@
 .relaxed {
     margin: 16px;
 }
+
+.white-text {
+    color: azure;
+}
+
+.card-title {
+    font-size: 30pt;
+    color: #606060;
+}
+
+.monthly-amount{
+    font-size: 46pt;
+    color: cadetblue;
+    padding: 24px;
+}
+
+.premium-amount{
+    font-size: 12pt;
+    color: #606060;
+    padding: 16px;
+}
+
+.first-amount{
+    font-size: 12pt;
+    color: #606060;
+    padding: 16px;
+}
