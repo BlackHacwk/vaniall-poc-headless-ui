@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@bit/mui-org.material-ui-icons.person-outline-two-tone": "^3.9.2",
     "bootstrap": "^4.3.1",
     "faker": "^4.1.0",
     "react": "^16.8.6",

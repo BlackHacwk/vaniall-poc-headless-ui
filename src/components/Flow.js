@@ -22,7 +22,7 @@ class Flow extends React.Component {
                 { title: "Account 3",
                     component:<Message title={faker.lorem.sentence()} message={faker.lorem.paragraph()}/>,
                     prev: 'Previous', next: 'Next' },
-                { title: "Account Questionnaire",
+                { title: "Questionnaire",
                     component:<Questionnaire questions={[
                         faker.hacker.phrase(),
                         faker.hacker.phrase(),
@@ -42,7 +42,7 @@ class Flow extends React.Component {
             <div>
                 <Container fluid={true}>
                     <Row>
-                    <Col lg={3}>
+                    <Col lg={4}>
                         <h1 style={{ paddingTop: "20px", paddingBottom: "10px", "color":"#57879D"}}>{pages[current].title}</h1>
                     </Col>
                     <Col>
