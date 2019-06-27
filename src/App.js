@@ -9,15 +9,15 @@ import {setCurrentComponent} from "./actions";
 
 const App = props => {
 
-    const setCurrentView = tag => tag === "#edit" ? <Flow/> : <PackageSummary/>;
+    const setCurrentView = tag => tag === "#packages" ? <PackageSummary/> : <Flow/>;
 
     return (
         <div>
             <Navbar bg='primary' variant='dark' onSelect={ tag => props.setCurrentComponent(tag)}>
                 <Navbar.Brand href="#">Ricsurance</Navbar.Brand>
                 <Nav>
-                    <Nav.Link href="#summary">Summary</Nav.Link>
-                    <Nav.Link href="#edit">Edit</Nav.Link>
+                    <Nav.Link href="#summary">Account Summary</Nav.Link>
+                    <Nav.Link href="#packages">Package Selection</Nav.Link>
                 </Nav>
             </Navbar>
             {setCurrentView(props.nav)}
