@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 import {selectPackage} from "../actions";
+import Form from 'react-bootstrap/Form'
+import Col from "react-bootstrap/Col";
 
 const PackageSummary = props => {
 
@@ -61,6 +63,25 @@ const PackageSummary = props => {
                     </Card.Body>
                 </Card>
             </CardDeck>
+            <Form>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>Bodily Injury</Form.Label>
+                        <Form.Control as="select">
+                            <option>Choose...</option>
+                            <option>...</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>Bodily Injury</Form.Label>
+                        <Form.Control as="select">
+                            <option>Choose...</option>
+                            <option>...</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Form.Row>
+            </Form>
+
         </Container>
     );
 };
