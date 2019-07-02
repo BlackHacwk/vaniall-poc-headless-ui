@@ -10,7 +10,7 @@ import * as RES from "../__mocks__/index"
 
 const CardDetails = props => (
         <Card style={{ width: '30rem' }} >
-            <Card.Header style={{ backgroundColor: '#00668A', color: 'white' }}>
+            <Card.Header>
                 { props.holder
                     ? `${RES.prefix} ${RES.displayName} (${RES.accountNumber})`
                     : `mr John Doe (000002222)` }

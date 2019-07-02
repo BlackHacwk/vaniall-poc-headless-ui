@@ -7,6 +7,7 @@ import CoverageSelection from "./CoverageSelector";
 
 const PackageSummary = () => (
         <Container fluid={true}>
+            <h1 className='title'>Package Selection (GOOD, BETTER, BEST)</h1>
             <CardDeck className='relaxed'>
                 <PackageCard id='standard' />
                 <PackageCard id='premium' />
