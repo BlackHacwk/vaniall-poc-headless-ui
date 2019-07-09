@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {SELECT_PACKAGE, SET_CURRENT} from "../actions/action-types";
+import {REQUEST_ACCOUNT_SUCCESS, SELECT_PACKAGE, SET_CURRENT} from "../actions/action-types";
 
 const navReducer = (state = null, action) => {
     if (action.type === SET_CURRENT)
@@ -15,4 +15,11 @@ const packageReducer = (state = null, action) => {
     return state;
 };
 
-export default combineReducers({ nav: navReducer, selectedPackage: packageReducer });
+const accountReducer = (state = null, action) => {
+    if (action.type === REQUEST_ACCOUNT_SUCCESS)
+        return action.payload;
+
+    return state;
+};
+
+export default combineReducers({ nav: navReducer, selectedPackage: packageReducer, account: accountReducer });

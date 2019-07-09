@@ -10,9 +10,6 @@ import Message from "./Message";
 import faker from 'faker';
 import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import {api} from "../api";
-import {account_endpoint, gateway_context_root, host, metadata_endpoint} from "../constants/endpoints";
-import axios from "axios";
 
 class Flow extends React.Component {
     constructor(props) {
@@ -21,7 +18,7 @@ class Flow extends React.Component {
         this.state = {
             current: 0,
             pages: [
-                { title: "Account Review", component:<AccountSummary/>, prev: 'Exit', next: 'Edit' },
+                { title: "Account Review", component:<AccountSummary household={[{account: "d"}]}/>, prev: 'Exit', next: 'Edit' },
                 { title: "Account Edit", component:<AccountEdit/>, prev: 'Previous', next: 'Save' },
                 { title: "Account 3",
                     component:<Message title={faker.lorem.sentence()} message={faker.lorem.paragraph()}/>,
@@ -38,21 +35,6 @@ class Flow extends React.Component {
                     prev: 'Previous', next: 'Done' },
             ]
         }
-    }
-
-    //TODO: REMOVE
-    componentDidMount() {
-        const headers = {
-            'Content-Type': 'application/json',
-            'Accept-Language':'en_US',
-            "Access-Control-Allow-Origin": "*",
-            'Authorization': "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmZDEyZTFlMzg2OTc0NjUzYjJjNDg0NDcxMzBhZTZhZiIsIm5vbmNlIjoibmtkbmxRYlFTeHRBSWt6aiIsInN1YiI6IjcwNGJiNjdkLWI1NmMtNDJjNS1iOWU5LTczMWE4MjIwMDM5MSIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJHYXRld2F5QXBwbGljYXRpb24tYWdlbnRzIiwiY2lkIjoiR2F0ZXdheUFwcGxpY2F0aW9uLWFnZW50cyIsImF6cCI6IkdhdGV3YXlBcHBsaWNhdGlvbi1hZ2VudHMiLCJ1c2VyX2lkIjoiNzA0YmI2N2QtYjU2Yy00MmM1LWI5ZTktNzMxYTgyMjAwMzkxIiwib3JpZ2luIjoicG9saWN5Y2VudGVyIiwidXNlcl9uYW1lIjoic3UiLCJlbWFpbCI6InN1QHVzZXIuZnJvbS5wb2xpY3ljZW50ZXIuY2YiLCJhdXRoX3RpbWUiOjE1NjI2MTk2NDMsInJldl9zaWciOiJmZjk1Njc2OSIsImlhdCI6MTU2MjYyMDQyOSwiZXhwIjoxNTYyNjIyMjI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvdWFhL29hdXRoL3Rva2VuIiwiemlkIjoidWFhIiwiYXVkIjpbIm9wZW5pZCIsIkdhdGV3YXlBcHBsaWNhdGlvbi1hZ2VudHMiXX0.mUzg8zNCHqk9uxy1JMMS3KWVe8kg2IZGkZZtDIMJbK21EjWjwUK0-DJsk6zD0pPN0p79SdI6Q_2-k3yuhqiR0PpKmarkqg-5WU_E8Rt8Nm1tpfAEYXNb76hnYg4HQk-1BlL302y3RSMtwXg9QLOYaogZ3fOdQy8E4HOAv5ZnzYnznynWD9ZoUyvwA6BC_JfWZe6mfK6mk3Oy7QVqI0uw2X53bx0U08w2GDXUZpsqtE1TcczgUVI6G5YTM-5ztSht0JIj2c_3lrx12OxGCOBYNfjO8vWmUL9xhTXDt2nlzqXbHTErjCCdIwzgKNvoKPRIRHBl-U7wAf8DszENNr_yQA"
-        };
-        api.post(
-            host + gateway_context_root + account_endpoint,
-            {"id":"a7eb6534-772c-475a-b270-97752998eeec","jsonrpc":"2.0","method":"getAccountDetails","params":["C000143542"]},
-            {headers: headers}
-        );
     }
 
     render() {

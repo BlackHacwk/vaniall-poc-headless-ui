@@ -8,9 +8,6 @@ const AccountEdit = () => (
         <Tab eventKey="jane" title="Jane Doe">
             <EditForm/>
         </Tab>
-        <Tab eventKey="j" title="John Doe">
-            <EditForm/>
-        </Tab>
     </Tabs>
 );
 
