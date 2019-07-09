@@ -2,10 +2,9 @@ import React from 'react';
 import CardDeck from 'react-bootstrap/CardDeck'
 import DetailCard from "./DetailCard";
 
-const AccountSummary = () => (
+const AccountSummary = props => (
     <CardDeck>
-        <DetailCard holder={true} />
-        <DetailCard holder={false} />
+        {props.household.map(person => <DetailCard key={person.account} accountNumber={'C000143542'} holder={true} />)}
     </CardDeck>
 );
 
