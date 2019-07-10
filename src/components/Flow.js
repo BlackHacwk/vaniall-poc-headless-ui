@@ -10,6 +10,9 @@ import Message from "./Message";
 import faker from 'faker';
 import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import {connect} from "react-redux";
+import {updateAccount} from "../actions";
+import {hardData} from "../__mocks__";
 
 class Flow extends React.Component {
     constructor(props) {
@@ -18,11 +21,14 @@ class Flow extends React.Component {
         this.state = {
             current: 0,
             pages: [
-                { title: "Account Review", component:<AccountSummary household={[{account: "d"}]}/>, prev: 'Exit', next: 'Edit' },
-                { title: "Account Edit", component:<AccountEdit/>, prev: 'Previous', next: 'Save' },
+                { title: "Account Review", component:<AccountSummary />, prev: 'Exit', next: 'Edit', callback: null },
+                { title: "Account Edit", component:<AccountEdit />, prev: 'Previous', next: 'Save', callback: ()=> this.props.updateAccount(hardData) },
                 { title: "Account 3",
                     component:<Message title={faker.lorem.sentence()} message={faker.lorem.paragraph()}/>,
-                    prev: 'Previous', next: 'Next' },
+                    prev: 'Previous',
+                    next: 'Next',
+                    callback: null
+                },
                 { title: "Questionnaire",
                     component:<Questionnaire questions={[
                         faker.hacker.phrase(),
@@ -32,13 +38,28 @@ class Flow extends React.Component {
                         faker.hacker.phrase(),
                         faker.hacker.phrase()
                     ]}/>,
-                    prev: 'Previous', next: 'Done' },
+                    prev: 'Previous',
+                    next: 'Done',
+                    callback: null
+                },
             ]
         }
     }
 
+    handlePrevClick = () => {
+        this.setState(prevState => ({ current: prevState.current -1 }));
+    };
+
+    handleNextClick = callback => {
+        this.setState(prevState => ({ current: prevState.current +1 }));
+
+        if(callback) callback();
+    };
+
+
     render() {
-        const { current, pages} = this.state;
+        const { current, pages } = this.state;
+        console.log(pages[current]);
         return (
             <div>
                 <Container fluid={true}>
@@ -63,12 +84,12 @@ class Flow extends React.Component {
                 <div style={{"marginTop":"150px"}} className="float-lg-right">
                     <Button
                         style={{"margin": "10px"}}
-                        onClick={ ()=> this.setState(prevState => ({ current: prevState.current -1 })) }
+                        onClick={ this.handlePrevClick }
                         size='lg'
                         variant='outline-primary' >{pages[current].prev}</Button>
                     <Button
                         style={{"margin": "10px"}}
-                        onClick={ ()=> this.setState(prevState => ({ current: prevState.current +1 })) }
+                        onClick={ ()=> this.handleNextClick(pages[current].callback) }
                         size='lg'
                         variant='primary'>{pages[current].next}</Button>
                 </div>
@@ -77,4 +98,4 @@ class Flow extends React.Component {
     }
 }
 
-export default Flow;
+export default connect(null, {updateAccount})(Flow);

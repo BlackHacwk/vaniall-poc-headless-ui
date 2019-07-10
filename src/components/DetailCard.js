@@ -6,51 +6,37 @@ import Col from "react-bootstrap/Col";
 import CardImg from "react-bootstrap/CardImg";
 import check from "../check.svg";
 import cap from "../cap.svg";
-import {connect} from "react-redux";
-import {requestAccountDetails} from "../actions";
 
-class CardDetails extends React.Component {
+const CardDetails = props => {
+    if( ! props.contact)
+        return <div>Loading...</div>;
 
-    componentDidMount() {
-        this.props.requestAccountDetails(this.props.accountNumber);
+    else {
+        const {contact} = props;
+        return (
+            <Card style={{ width: '30rem' }} >
+                <Card.Header>
+                    { contact.displayName }
+                </Card.Header>
+                <Card.Body>
+                    <Container fluid={false}>
+                        <Row>
+                            <Col lg={3}>
+                                <CardImg variant="bottom" src={props.holder ? check : cap} height="150px" />
+                            </Col>
+                            <Col>
+                                <div>DOB: {contact.dateOfBirth.day}/{contact.dateOfBirth.month}/{contact.dateOfBirth.year}</div>
+                                <div>{contact.cellNumber}</div>
+                                <div>{contact.emailAddress1}</div>
+                                <div>{contact.licenseNumber} ({contact.licenseState})</div>
+                                <div>{contact.primaryAddress.addressLine1}, {contact.primaryAddress.city}, {contact.primaryAddress.state} {contact.primaryAddress.postalCode}</div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Card.Body>
+            </Card>
+        )
     }
+};
 
-    render() {
-        if( ! this.props.account)
-            return <div>Loading...</div>;
-
-        else {
-            const {accountHolder} = this.props.account;
-            console.log(this.props.account);
-            return (
-                <Card style={{ width: '30rem' }} >
-                    <Card.Header>
-                        { this.props.holder // TODO: figure out the right prop for this
-                            ? `${accountHolder.displayName} (${this.props.account.accountNumber})`
-                            : `mr John Doe (000002222)` }
-                    </Card.Header>
-                    <Card.Body>
-                        <Container fluid={false}>
-                            <Row>
-                                <Col lg={3}>
-                                    <CardImg variant="bottom" src={this.props.holder ? check : cap} height="150px" />
-                                </Col>
-                                <Col>
-                                    <div>DOB: {accountHolder.dateOfBirth.day}/{accountHolder.dateOfBirth.month}/{accountHolder.dateOfBirth.year}</div>
-                                    <div>{accountHolder.cellNumber}</div>
-                                    <div>{accountHolder.emailAddress1}</div>
-                                    <div>{accountHolder.licenseNumber} ({accountHolder.licenseState})</div>
-                                    <div>{accountHolder.primaryAddress.addressLine1}, {accountHolder.primaryAddress.city}, {accountHolder.primaryAddress.state} {accountHolder.primaryAddress.postalCode}</div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Card.Body>
-                </Card>
-            )
-        };
-    }
-}
-
-const mapStateToProps = state => ({account: state.account});
-
-export default connect(mapStateToProps, {requestAccountDetails})(CardDetails);
+export default CardDetails;

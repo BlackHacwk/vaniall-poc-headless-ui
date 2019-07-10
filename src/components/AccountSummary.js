@@ -1,11 +1,12 @@
 import React from 'react';
 import CardDeck from 'react-bootstrap/CardDeck'
 import DetailCard from "./DetailCard";
+import {connect} from "react-redux";
 
 const AccountSummary = props => (
     <CardDeck>
-        {props.household.map(person => <DetailCard key={person.account} accountNumber={'C000143542'} holder={true} />)}
+        {props.contacts.map(contact => <DetailCard key={contact.accountContactPublicID} contact={contact} holder={true} />)}
     </CardDeck>
 );
 
-export default AccountSummary;
+export default connect(state => ({contacts: state.contacts}))(AccountSummary);

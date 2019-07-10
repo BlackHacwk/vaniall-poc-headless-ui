@@ -1,133 +1,173 @@
-export const {accountNumber, accountHolder} = {
-    "canUserView" : true,
-    "numberOfOpenClaims" : 1,
-    "totalPremium" : "",
-    "numberOfWorkOrders" : 1,
-    "accountNumber" : "00000001111",
-    "accountHolder" : {
-        "primaryContactName" : "sample String",
-        "lastName" : "sample String",
-        "additionalAddresses" : [ "" ],
-        "gender" : "F",
-        "displayName" : "Jane Doe",
-        "prefix" : "ms",
-        "emailAddress1" : "jdoe@email.com",
-        "producerCode" : "sample String",
-        "suffix" : "jr",
-        "cellNumber" : "(123) 123-1234",
-        "accountHolder" : true,
-        "subtype" : "sample String",
-        "contactNameKanji" : "sample String",
-        "particle" : "sample String",
-        "licenseNumber" : "AB123456789",
-        "tempID" : 0,
-        "publicID" : "sample String",
-        "lastNameKanji" : "sample String",
-        "primaryPhoneType" : "work",
-        "licenseState" : "AU_ACT",
-        "contactName" : "sample String",
-        "dateOfBirth" : {
-            "month" : 5,
-            "year" : 5,
-            "day" : 2
-        },
-        "firstNameKanji" : "sample String",
-        "markedForDelete" : true,
-        "firstName" : "sample String",
-        "workNumber" : "sample String",
-        "faxNumber" : "sample String",
-        "middleName" : "sample String",
-        "primaryAddress" : {
-            "addressLine1Kanji" : "123 Fake st",
-            "country" : "US",
-            "cityKanji" : "sample String",
-            "city" : "unreal city",
-            "displayName" : "sample String",
-            "addressType" : "billing",
-            "postalCode" : "12345",
-            "county" : "sample String",
-            "addressLine2Kanji" : "sample String",
-            "isAutofilled" : true,
-            "markForDeletion" : true,
-            "addressLine1" : "123 Fake st",
-            "addressLine2" : "sample String",
-            "addressLine3" : "sample String",
-            "state" : "Hokkaido",
-            "spatialPoint" : {
-                "latitude" : 6.02745618307040320615897144307382404804229736328125,
-                "longitude" : 1.46581298050294517310021547018550336360931396484375
+export const hardData = {
+    "jsonrpc": "2.0",
+    "id": "a7eb6534-772c-475a-b270-97752998eeec","method": "updateAccountDetails",
+    "params": [
+        {
+            "publicID": "pc:5",
+            "producerCodes": [
+                {
+                    "code": "100-002541",
+                    "publicID": "pc:6",
+                    "displayValue": "100-002541 Armstrong (Premier)",
+                    "description": "Armstrong (Premier)"
+                }
+            ],
+            "totalPremium": {
+                "amount": 1338,
+                "currency": "usd"
             },
-            "publicID" : "sample String"
-        },
-        "homeNumber" : "sample String",
-        "maritalStatus" : "D"
-    },
-    "producerCodes" : [ {
-        "displayValue" : "sample String",
-        "code" : "sample String",
-        "description" : "sample String",
-        "publicID" : "sample String"
-    } ],
-    "accountCreatedDate" : "2000-01-23T04:56:07.000+00:00",
-    "policySummaries" : [ {
-        "isCancelled" : true,
-        "product" : {
-            "productCode" : "sample String",
-            "publicID" : "sample String",
-            "productName" : "sample String"
-        },
-        "canUserView" : true,
-        "producerCodeOfRecord" : "sample String",
-        "policyNumber" : "sample String",
-        "policyLines" : [ {
-            "lineOfBusinessName" : "sample String",
-            "lineOfBusinessCode" : "sample String"
-        } ],
-        "displayStatus" : "sample String",
-        "accountNumber" : "sample String",
-        "accountHolderName" : "sample String",
-        "effective" : "2000-01-23T04:56:07.000+00:00",
-        "isIssued" : true,
-        "accountHolder" : "",
-        "premium" : {
-            "amount" : 9.301444243932575517419536481611430644989013671875,
-            "currency" : "usd"
-        },
-        "producerCodeOfService" : "sample String",
-        "createdByMe" : true,
-        "policyId" : "sample String",
-        "delinquent" : true,
-        "primaryInsuredName" : "sample String",
-        "expiration" : "2000-01-23T04:56:07.000+00:00"
-    } ],
-    "numberOfOpenQuotes" : 1,
-    "canUserCreateSubmission" : true,
-    "numberOfOpenPolicyCancellations" : 7,
-    "statusDisplayName" : "sample String",
-    "numberOfDocuments" : 7,
-    "numberOfOpenActivities" : 2,
-    "accountBillingSummary" : {
-        "collateralHeld" : "",
-        "unbilled" : "",
-        "unappliedFunds" : "",
-        "outstandingPastDue" : "",
-        "outstandingTotal" : "",
-        "primaryPayer" : {
-            "address" : "sample String",
-            "phoneNumber" : "sample String",
-            "name" : "sample String"
-        },
-        "isDelinquent" : true,
-        "outstandingCurrent" : {
-            "amount" : 7.061401241503109105224211816675961017608642578125,
-            "currency" : "usd"
-        },
-        "collateralRequirement" : ""
-    },
-    "numberOfNotes" : 4,
-    "numberOfOpenPolicyChanges" : 1,
-    "numberOfContacts" : 3,
-    "publicID" : "sample String",
-    "numberOfOpenPolicyRenewals" : 6
+            "accountHolder": {
+                "publicID": "test_pp:8",
+                "subtype": "Person",
+                "emailAddress1": "0013@guidewire.com",
+                "primaryAddress": {
+                    "publicID": "pc:429",
+                    "country": "US",
+                    "city": "Hopkinsville",
+                    "postalCode": "42240",
+                    "county": "San Mateo",
+                    "addressLine1": "1199 S Walnut St",
+                    "addressLine2": "Floor 0001",
+                    "addressLine3": "This is a change",
+                    "addressType": "home",
+                    "state": "KY",
+                    "displayName": "1199 S Walnut St, Floor 0001, This is a change, Hopkinsville, KY 42240"
+                },
+                "dateOfBirth": {
+                    "day": 1,
+                    "year": 1979,
+                    "month": 0
+                },
+                "firstName": "Wendell",
+                "lastName": "Jackson",
+                "licenseNumber": "123456789",
+                "licenseState": "OH",
+                "gender": "F",
+                "accountHolder": true,
+                "additionalAddresses": [],
+                "cellNumber": "6503333333",
+                "homeNumber": "2708862543",
+                "primaryPhoneType": "home",
+                "displayName": "Wendell Jackson"
+            },
+            "accountNumber": "C000456354",
+            "numberOfOpenActivities": 0,
+            "numberOfContacts": 11,
+            "numberOfNotes": 5,
+            "numberOfDocuments": 0,
+            "numberOfWorkOrders": 2,
+            "numberOfOpenQuotes": 0,
+            "numberOfOpenPolicyCancellations": 0,
+            "numberOfOpenPolicyChanges": 1,
+            "numberOfOpenPolicyRenewals": 1,
+            "numberOfOpenClaims": 1,
+            "accountBillingSummary": {
+                "collateralRequirement": {
+                    "amount": 5000,
+                    "currency": "usd"
+                },
+                "collateralHeld": {
+                    "amount": 5000,
+                    "currency": "usd"
+                },
+                "unbilled": {
+                    "amount": 35999.38,
+                    "currency": "usd"
+                },
+                "primaryPayer": {
+                    "phoneNumber": "850-578-1682 x0007",
+                    "address": "4040 Elmwood Ave, Floor 0000, Louisville, KY 40207, US",
+                    "name": "Bill Kinman"
+                },
+                "isDelinquent": false,
+                "outstandingCurrent": {
+                    "amount": 11077.18,
+                    "currency": "usd"
+                },
+                "outstandingPastDue": {
+                    "amount": 1000.18,
+                    "currency": "usd"
+                },
+                "outstandingTotal": {
+                    "amount": 12077.18,
+                    "currency": "usd"
+                },
+                "unappliedFunds": {
+                    "amount": 0,
+                    "currency": "usd"
+                }
+            },
+            "statusDisplayName": "Active",
+            "accountCreatedDate": "2019-07-02T01:20:58Z",
+            "policySummaries": [
+                {
+                    "displayStatus": "In Force",
+                    "effective": "2019-04-02T05:01:00Z",
+                    "isCancelled": false,
+                    "isIssued": true,
+                    "delinquent": false,
+                    "product": {
+                        "publicID": "PersonalAuto",
+                        "productCode": "PersonalAuto",
+                        "productName": "Personal Auto"
+                    },
+                    "policyNumber": "1424066131",
+                    "primaryInsuredName": "Wendell Jackson",
+                    "producerCodeOfService": "100-002541",
+                    "accountHolder": {
+                        "publicID": "test_pp:8",
+                        "subtype": "Person",
+                        "emailAddress1": "0013@guidewire.com",
+                        "primaryAddress": {
+                            "publicID": "pc:429",
+                            "country": "US",
+                            "city": "Hopkinsville",
+                            "postalCode": "42240",
+                            "county": "San Mateo",
+                            "addressLine1": "1199 S Walnut St",
+                            "addressLine2": "Floor 0001",
+                            "addressLine3": "This is a change",
+                            "addressType": "home",
+                            "state": "KY",
+                            "displayName": "1199 S Walnut St, Floor 0001, This is a change, Hopkinsville, KY 42240"
+                        },
+                        "dateOfBirth": {
+                            "day": 1,
+                            "year": 1979,
+                            "month": 0
+                        },
+                        "firstName": "Wendell",
+                        "lastName": "Jackson",
+                        "licenseNumber": "123456789",
+                        "licenseState": "OH",
+                        "gender": "F",
+                        "accountHolder": true,
+                        "additionalAddresses": [],
+                        "cellNumber": "6503333333",
+                        "homeNumber": "2708862543",
+                        "primaryPhoneType": "home",
+                        "displayName": "Wendell Jackson"
+                    },
+                    "accountNumber": "C000456354",
+                    "accountHolderName": "Wendell Jackson",
+                    "producerCodeOfRecord": "100-002541",
+                    "expiration": "2019-10-02T05:01:00Z",
+                    "policyLines": [
+                        {
+                            "lineOfBusinessCode": "PersonalAutoLine",
+                            "lineOfBusinessName": "Personal Auto Line"
+                        }
+                    ],
+                    "canUserView": true,
+                    "createdByMe": false,
+                    "premium": {
+                        "amount": 1338,
+                        "currency": "usd"
+                    }
+                }
+            ],
+            "canUserCreateSubmission": true,
+            "canUserView": true
+        }
+    ]
 };
-export const {prefix, dateOfBirth, displayName, cellNumber, primaryAddress, emailAddress1, licenseNumber, licenseState} = accountHolder;

@@ -5,7 +5,7 @@ import {FormControl} from "react-bootstrap";
 import {connect} from "react-redux";
 
 const EditForm = props => {
-    const {accountHolder} = props.account;
+    const {contact} = props;
 
     return (
         <Form>
@@ -13,41 +13,41 @@ const EditForm = props => {
                 <Form.Label variant='secondary'>License</Form.Label>
                 <InputGroup size='lg'>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>License Number</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.licenseNumber}/>
+                    <FormControl placeholder={contact.licenseNumber}/>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>License State</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.licenseState}/>
+                    <FormControl placeholder={contact.licenseState}/>
                 </InputGroup>
             </Form.Group>
             <Form.Group controlId="formGroupPersonal">
                 <Form.Label>Personal</Form.Label>
                 <InputGroup size='lg'>
                     <InputGroup.Prepend><InputGroup.Text  style={{"background": "none"}}>Name</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.displayName}/>
+                    <FormControl placeholder={contact.displayName}/>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>DOB</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={`${accountHolder.dateOfBirth.day}/${accountHolder.dateOfBirth.month}/${accountHolder.dateOfBirth.year}`}/>
+                    <FormControl placeholder={`${contact.dateOfBirth.day}/${contact.dateOfBirth.month}/${contact.dateOfBirth.year}`}/>
                 </InputGroup>
                 <InputGroup size='lg'>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>Phone Number</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.cellNumber}/>
+                    <FormControl placeholder={contact.cellNumber}/>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>Email</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.emailAddress1}/>
+                    <FormControl placeholder={contact.emailAddress1}/>
                 </InputGroup>
             </Form.Group>
             <Form.Group controlId="formGroupAddress">
                 <Form.Label>Address</Form.Label>
                 <InputGroup size='lg'>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>line 1</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.primaryAddress.addressLine1}/>
+                    <FormControl placeholder={contact.primaryAddress.addressLine1}/>
                 </InputGroup>
                 <InputGroup size='lg'>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>City</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.primaryAddress.city}/>
+                    <FormControl placeholder={contact.primaryAddress.city}/>
                 </InputGroup>
                 <InputGroup size='lg'>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>State</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.primaryAddress.state}/>
+                    <FormControl placeholder={contact.primaryAddress.state}/>
                     <InputGroup.Prepend><InputGroup.Text style={{"background": "none"}}>Zip Code</InputGroup.Text></InputGroup.Prepend>
-                    <FormControl placeholder={accountHolder.primaryAddress.postalCode}/>
+                    <FormControl placeholder={contact.primaryAddress.postalCode}/>
                 </InputGroup>
             </Form.Group>
         </Form>
