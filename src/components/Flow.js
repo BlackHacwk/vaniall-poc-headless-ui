@@ -53,7 +53,7 @@ class Flow extends React.Component {
     handleNextClick = callback => {
         this.setState(prevState => ({ current: prevState.current +1 }));
 
-        if(callback) callback();
+        // if(callback) callbackcallback();
     };
 
 

@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import {
+    REQUEST_ACCOUNT_MESSAGE_SUCCESS,
     REQUEST_ACCOUNT_SUCCESS,
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
     REQUEST_CONTACTS_SUCCESS,
@@ -37,9 +38,19 @@ const contactReducer = (state = [], action) => {
     return state;
 };
 
+
+const messageReducer = (state = [], action) => {
+    console.log(action);
+    if (action.type === REQUEST_ACCOUNT_MESSAGE_SUCCESS)
+        return action.payload;
+
+    return state;
+};
+
 export default combineReducers({
     nav: navReducer,
     selectedPackage: packageReducer,
     account: accountReducer,
-    contacts: contactReducer
+    contacts: contactReducer,
+    message: messageReducer
 });
