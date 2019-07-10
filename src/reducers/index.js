@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import {SELECT_PACKAGE, SET_CURRENT} from "../actions/action-types";
+import {metadataReducer} from "./metadataReducer";
 
 const navReducer = (state = null, action) => {
     if (action.type === SET_CURRENT)
@@ -15,4 +16,4 @@ const packageReducer = (state = null, action) => {
     return state;
 };
 
-export default combineReducers({ nav: navReducer, selectedPackage: packageReducer });
+export default combineReducers({ nav: navReducer, selectedPackage: packageReducer, metadata: metadataReducer });
