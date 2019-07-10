@@ -11,7 +11,7 @@ import faker from 'faker';
 import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import {connect} from "react-redux";
-import {updateAccount} from "../actions";
+import {requestPolicyContacts, updateAccount} from "../actions";
 import {hardData} from "../__mocks__";
 
 class Flow extends React.Component {
@@ -21,16 +21,24 @@ class Flow extends React.Component {
         this.state = {
             current: 0,
             pages: [
-                { title: "Account Review", component:<AccountSummary />, prev: 'Exit', next: 'Edit', callback: null },
-                { title: "Account Edit", component:<AccountEdit />, prev: 'Previous', next: 'Save', callback: ()=> this.props.updateAccount(hardData) },
-                { title: "Account 3",
-                    component:<Message title={faker.lorem.sentence()} message={faker.lorem.paragraph()}/>,
+                {title: "Account Review", component: <AccountSummary/>, prev: 'Exit', next: 'Edit', callback: null},
+                {
+                    title: "Account Edit",
+                    component: <AccountEdit/>,
+                    prev: 'Previous',
+                    next: 'Save',
+                    callback: () => this.props.updateAccount(hardData)
+                },
+                {
+                    title: "Account 3",
+                    component: <Message title={faker.lorem.sentence()} message={faker.lorem.paragraph()}/>,
                     prev: 'Previous',
                     next: 'Next',
                     callback: null
                 },
-                { title: "Questionnaire",
-                    component:<Questionnaire questions={[
+                {
+                    title: "Questionnaire",
+                    component: <Questionnaire questions={[
                         faker.hacker.phrase(),
                         faker.hacker.phrase(),
                         faker.hacker.phrase(),
@@ -46,6 +54,10 @@ class Flow extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.requestPolicyContacts("1424066131");
+    }
+
     handlePrevClick = () => {
         this.setState(prevState => ({ current: prevState.current -1 }));
     };
@@ -53,13 +65,12 @@ class Flow extends React.Component {
     handleNextClick = callback => {
         this.setState(prevState => ({ current: prevState.current +1 }));
 
-        // if(callback) callbackcallback();
+        if(callback) callback();
     };
 
 
     render() {
         const { current, pages } = this.state;
-        console.log(pages[current]);
         return (
             <div>
                 <Container fluid={true}>
@@ -98,4 +109,4 @@ class Flow extends React.Component {
     }
 }
 
-export default connect(null, {updateAccount})(Flow);
+export default connect(null, {updateAccount, requestPolicyContacts})(Flow);

@@ -22,7 +22,7 @@ const CardDetails = props => {
                     <Container fluid={false}>
                         <Row>
                             <Col lg={3}>
-                                <CardImg variant="bottom" src={props.holder ? check : cap} height="150px" />
+                                <CardImg variant="bottom" src={contact.policyContactRoles.includes('PolicyPriNamedInsured')? check : cap} height="150px" />
                             </Col>
                             <Col>
                                 <div>DOB: {contact.dateOfBirth.day}/{contact.dateOfBirth.month}/{contact.dateOfBirth.year}</div>

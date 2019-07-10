@@ -1,11 +1,13 @@
 import {
     REQUEST_ACCOUNT_MESSAGE_FAILURE,
     REQUEST_ACCOUNT_MESSAGE_SUCCESS,
-    REQUEST_ACCOUNT_SUCCESS,
-    REQUEST_ACCOUNT_UPDATE, REQUEST_ACCOUNT_UPDATE_FAILURE, REQUEST_ACCOUNT_UPDATE_SUCCESS,
+    REQUEST_ACCOUNT_UPDATE,
+    REQUEST_ACCOUNT_UPDATE_FAILURE,
+    REQUEST_ACCOUNT_UPDATE_SUCCESS,
     REQUEST_CONTACTS,
     REQUEST_CONTACTS_FAILURE,
-    REQUEST_CONTACTS_SUCCESS, REQUEST_MESSAGE_UPDATE,
+    REQUEST_CONTACTS_SUCCESS,
+    REQUEST_MESSAGE_UPDATE,
     SELECT_PACKAGE,
     SET_CURRENT
 } from "./action-types";
@@ -19,7 +21,6 @@ export const selectPackage = type => dispatch => dispatch({type: SELECT_PACKAGE,
 
 export const requestPolicyContacts = policyNumber => dispatch => {
     const data = {"id":"a7eb6534-772c-475a-b270-97752998eeec","jsonrpc":"2.0","method":"getPolicyContactSummaries","params":[policyNumber, [] ,0 ,5]};
-
     api.post(
         host + context_root + contact_endpoint,
         data,
@@ -32,7 +33,6 @@ export const requestPolicyContacts = policyNumber => dispatch => {
 };
 
 export const updateAccount = data => dispatch => {
-
     api.post(
         host + context_root + account_endpoint,
         data,

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 const AccountSummary = props => (
     <CardDeck>
-        {props.contacts.map(contact => <DetailCard key={contact.accountContactPublicID} contact={contact} holder={true} />)}
+        {props.contacts.map(contact => <DetailCard key={contact.accountContactPublicID} contact={contact} />)}
     </CardDeck>
 );
 

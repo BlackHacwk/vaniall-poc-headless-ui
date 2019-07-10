@@ -5,13 +5,9 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from "react-bootstrap/Nav";
 import PackageSummary from "./components/PackageSummary";
 import {connect} from 'react-redux'
-import {requestPolicyContacts, setCurrentComponent} from "./actions";
+import {setCurrentComponent} from "./actions";
 
 class App extends React.Component {
-
-    componentDidMount() {
-        this.props.requestPolicyContacts("1424066131");
-    }
 
     setCurrentView = tag => tag === "#packages" ? <PackageSummary/> : <Flow/>;
 
@@ -31,4 +27,4 @@ class App extends React.Component {
     }
 }
 
-export default connect(state => ({ nav: state.nav, contacts: state.contacts }), { setCurrentComponent, requestPolicyContacts })(App);
+export default connect(state => ({ nav: state.nav }), { setCurrentComponent })(App);

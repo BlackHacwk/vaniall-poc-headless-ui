@@ -21,20 +21,15 @@ class Message extends React.Component {
     };
 
     render() {
+        if(!this.props.message) return <div>Loading ...</div>;
 
-        console.log(this.props);
-
-        if(!this.props.message){
-            return <div>Loading ...</div>
-        }
-        else {
-            return (
-                <Alert variant={this.determineStyleToUse}>
-                    <Alert.Heading>{this.props.message.subject}</Alert.Heading>
-                    <p>{this.props.message.description}</p>
-                </Alert>
-            );
-        }
+        else return (
+            <Alert variant={this.determineStyleToUse(this.props.message.priority)}>
+                <Alert.Heading>{this.props.message.subject}</Alert.Heading>
+                <p>{this.props.message.description}</p>
+                <small>Created on: {this.props.message.dueDate}</small>
+            </Alert>
+        );
     };
 }
 

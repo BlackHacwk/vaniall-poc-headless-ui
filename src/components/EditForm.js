@@ -2,7 +2,6 @@ import React from 'react';
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import {FormControl} from "react-bootstrap";
-import {connect} from "react-redux";
 
 const EditForm = props => {
     const {contact} = props;
@@ -54,4 +53,4 @@ const EditForm = props => {
     );
 };
 
-export default connect(state => ({account: state.account}), null)(EditForm);
+export default EditForm;

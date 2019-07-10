@@ -40,7 +40,6 @@ const contactReducer = (state = [], action) => {
 
 
 const messageReducer = (state = [], action) => {
-    console.log(action);
     if (action.type === REQUEST_ACCOUNT_MESSAGE_SUCCESS)
         return action.payload;
 
