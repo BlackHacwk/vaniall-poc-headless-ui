@@ -48,7 +48,8 @@ const messageReducer = (state = [], action) => {
 };
 
 
-const goodBetterBestReducer = (state=[], action) => {
+const goodBetterBestReducer = (state={}, action) => {
+    console.log(action);
     if (action.type === REQUEST_GBB_SUCCESS)
         return action.payload;
 

@@ -11,7 +11,8 @@ import faker from 'faker';
 import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import {connect} from "react-redux";
-import {requestPolicyContacts, updateAccount, requestGoodBetterBest} from "../actions";import {accountDTO} from "../__mocks__";
+import {requestGoodBetterBest, requestPolicyContacts, updateAccount} from "../actions";
+import {accountDTO} from "../__mocks__";
 
 class Flow extends React.Component {
     constructor(props) {
@@ -55,7 +56,7 @@ class Flow extends React.Component {
 
     componentDidMount() {
         this.props.requestPolicyContacts("1424066131");
-        this.props.requestGoodBetterBest("1234");
+        this.props.requestGoodBetterBest("0002848077");
     }
 
     handlePrevClick = () => {
