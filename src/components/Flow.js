@@ -11,7 +11,7 @@ import faker from 'faker';
 import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import {connect} from "react-redux";
-import {requestPolicyContacts, updateAccount} from "../actions";
+import {requestPolicyContacts, updateAccount, requestGoodBetterBest} from "../actions";
 import {hardData} from "../__mocks__";
 
 class Flow extends React.Component {
@@ -110,4 +110,4 @@ class Flow extends React.Component {
     }
 }
 
-export default connect(null, {updateAccount, requestPolicyContacts})(Flow);
+export default connect(null, {updateAccount, requestPolicyContacts, requestGoodBetterBest})(Flow);

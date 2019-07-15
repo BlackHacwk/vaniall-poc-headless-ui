@@ -3,7 +3,7 @@ import {
     REQUEST_ACCOUNT_MESSAGE_SUCCESS,
     REQUEST_ACCOUNT_SUCCESS,
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
-    REQUEST_CONTACTS_SUCCESS,
+    REQUEST_CONTACTS_SUCCESS, REQUEST_GBB_SUCCESS,
     SELECT_PACKAGE,
     SET_CURRENT
 } from "../actions/action-types";
@@ -46,10 +46,19 @@ const messageReducer = (state = [], action) => {
     return state;
 };
 
+
+const goodBetterBestReducer = (state=[], action) => {
+    if (action.type === REQUEST_GBB_SUCCESS)
+        return action.payload;
+
+    return state;
+};
+
 export default combineReducers({
     nav: navReducer,
     selectedPackage: packageReducer,
     account: accountReducer,
     contacts: contactReducer,
-    message: messageReducer
+    message: messageReducer,
+    gbb : goodBetterBestReducer
 });
