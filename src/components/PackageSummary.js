@@ -13,13 +13,7 @@ const PackageSummary = () => (
                 {gbbRes.result.quoteData.offeredQuotes.map(pack => <PackageCard key={pack.branchName} id={pack.branchName} pack={pack} />)}
             </CardDeck>
             <Form>
-                <Form.Row>
-                    <CoverageSelection />
-                    <CoverageSelection />
-                    <CoverageSelection />
-                    <CoverageSelection />
-                    <CoverageSelection />
-                </Form.Row>
+                <CoverageSelection/>
             </Form>
         </Container>
     );

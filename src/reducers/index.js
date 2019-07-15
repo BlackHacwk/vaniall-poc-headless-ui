@@ -20,7 +20,7 @@ const packageReducer = (state = null, action) => {
     if (action.type === SELECT_PACKAGE)
         return action.payload;
 
-    return state;
+    return "CUSTOM";
 };
 
 const accountReducer = (state = null, action) => {
