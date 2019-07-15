@@ -6,9 +6,9 @@ const PROTOCOL = 'https://';
 // const CC_DOMAIN = 'localhost';
 // const CM_DOMAIN = 'localhost';
 
-const PC_DOMAIN = 'dev-pe.usaadev.guidewire.net';
-const CC_DOMAIN = 'dev-pe.usaadev.guidewire.net';
-const CM_DOMAIN = 'dev-pe.usaadev.guidewire.net';
+const PC_DOMAIN = 'dev6-pe.usaadev.guidewire.net';
+const CC_DOMAIN = 'dev6-pe.usaadev.guidewire.net';
+const CM_DOMAIN = 'dev6-pe.usaadev.guidewire.net';
 
 // const PC_PORT = ':8180';
 // const CC_PORT = ':8080';

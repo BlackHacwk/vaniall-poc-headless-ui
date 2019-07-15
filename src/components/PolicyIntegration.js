@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Highlight from "react-highlight";
 import ZipCode from "./ZipCode";
+import City from "./City";
 
 class PolicyIntegration extends React.Component {
 
@@ -21,7 +22,7 @@ class PolicyIntegration extends React.Component {
     }
 
     componentDidMount() {
-        this.props.postGetPolicyMetaData('asdf.asdf.asdf-asdf-asdf')
+        this.props.postGetPolicyMetaData('asdf.asdf.asdf--asdf-asdf-asdf-asdf')
     }
 
     renderPolicy() {
@@ -2090,6 +2091,17 @@ class PolicyIntegration extends React.Component {
                         </div>
                     </Col>
                 </Row>
+                <Row>
+                    <Col>
+                        City: &nbsp;
+                        <select>
+                            {this.policyMetadata['']}
+                        </select>
+                    </Col>
+                    <Col>
+
+                    </Col>
+                </Row>
             </Container>
             <h1>DTOs</h1>
             <Container>
@@ -2197,11 +2209,152 @@ class PolicyIntegration extends React.Component {
                             `}
                         </Highlight>
                         </div>
-
-                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <City cityMetadata={this.policyMetadata['edge.capabilities.address.dto.AddressDTO'].value.properties.City} />
+                    </Col>
+                    <Col>
+                        <div style={{overflow: 'auto', maxHeight: '400px', width: '800px', margin: '25px 0px'}}>
+                        <Highlight language="json">
+                            {`{
+    "valueType": {
+        "name": "String",
+        "kind": "primitive"
+    },
+    "metadata": [
+        {
+            "type": "edge.aspects.validation.dto.ValidationRuleDTO",
+            "value": {
+                "expression": {
+                    "params": [
+                        {
+                            "params": [
+                                {
+                                    "params": [
+                                        {
+                                            "base": {
+                                                "index": 0,
+                                                "kind": "parameter"
+                                            },
+                                            "propertyName": "length",
+                                            "kind": "getfield"
+                                        },
+                                        {
+                                            "value": 0,
+                                            "type": "int",
+                                            "kind": "const"
+                                        }
+                                    ],
+                                    "container": ":sys:ops:",
+                                    "name": "less",
+                                    "kind": "nativecall"
+                                },
+                                {
+                                    "params": [
+                                        {
+                                            "base": {
+                                                "index": 0,
+                                                "kind": "parameter"
+                                            },
+                                            "propertyName": "length",
+                                            "kind": "getfield"
+                                        },
+                                        {
+                                            "value": 60,
+                                            "type": "int",
+                                            "kind": "const"
+                                        }
+                                    ],
+                                    "container": ":sys:ops:",
+                                    "name": "greater",
+                                    "kind": "nativecall"
+                                }
+                            ],
+                            "container": ":sys:ops:",
+                            "name": "or",
+                            "kind": "nativecall"
+                        }
+                    ],
+                    "container": ":sys:ops:",
+                    "name": "not",
+                    "kind": "nativecall"
+                },
+                "message": {
+                    "arguments": [
+                        {
+                            "value": 0,
+                            "type": "int",
+                            "kind": "const"
+                        },
+                        {
+                            "value": 60,
+                            "type": "int",
+                            "kind": "const"
+                        }
+                    ],
+                    "displayKey": "displaykey.Edge.Web.Api.Model.Size",
+                    "kind": "translate"
+                }
+            }
+        },
+        {
+            "type": "edge.aspects.validation.dto.VisibilityAndRequirednessRuleDTO",
+            "value": {
+                "expression": {
+                    "params": [
+                        {
+                            "params": [
+                                {
+                                    "params": [
+                                        {
+                                            "index": 2,
+                                            "kind": "parameter"
+                                        },
+                                        {
+                                            "value": "IsNonSpecificLocation",
+                                            "type": "string",
+                                            "kind": "const"
+                                        }
+                                    ],
+                                    "container": "edge.aspects.validation.ValidationFunctions",
+                                    "name": "getContextValue",
+                                    "kind": "nativecall"
+                                }
+                            ],
+                            "container": ":sys:ops:",
+                            "name": "not",
+                            "kind": "nativecall"
+                        },
+                        {
+                            "value": "REQUIRED",
+                            "type": "enum edge.aspects.validation.VisibilityAndRequiredness",
+                            "kind": "const"
+                        }
+                    ],
+                    "container": "edge.aspects.validation.ValidationFunctions",
+                    "name": "optionalVisibility",
+                    "kind": "nativecall"
+                },
+                "message": {
+                    "arguments": [],
+                    "displayKey": "displaykey.Edge.Web.Api.Model.NotNull",
+                    "kind": "translate"
+                }
+            }
+        }
+    ],
+    "name": "City"
+}
+                            `}
+                        </Highlight>
+                        </div>
                     </Col>
                 </Row>
             </Container>
+
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div>
     }
 
