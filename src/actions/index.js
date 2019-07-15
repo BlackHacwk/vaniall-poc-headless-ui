@@ -88,14 +88,29 @@ export const requestMessage = (priority,description) => dispatch => {
 };
 
 
-export const requestGoodBetterBest = (placeholderIDNumber) => dispatch => {
-  const data = {"id":"69b6d7d3-5564-4771-9799-bbe822d213a8","jsonrpc":"2.0","method":"retrieve","params":[{"quoteID":"0002848077","postalCode":"78247","productCode":null,"effectiveDate":null,"gatewayportalnewsubmission":true,"displayYourInfoStep":null,"account":null,"shouldUpdateEffectiveDate":null}]}
+export const requestGoodBetterBest = quoteID => dispatch => {
+  const data = {
+      "id": "69b6d7d3-5564-4771-9799-bbe822d213a8",
+      "jsonrpc": "2.0",
+      "method": "retrieve",
+      "params": [
+          {
+              "quoteID": quoteID,
+              "postalCode": "78247",
+              "productCode": null,
+              "effectiveDate": null,
+              "gatewayportalnewsubmission": true,
+              "displayYourInfoStep": null,
+              "account": null,
+              "shouldUpdateEffectiveDate": null
+          }]
+  };
 
     api.post(
         host + context_root + goodBetterBest_endpoint,
         data,
         {headers: headers})
-        .then(res => dispatch({type: REQUEST_GBB_SUCCESS, payload: res.data.result}))
+        .then(res => dispatch({type: REQUEST_GBB_SUCCESS, payload: res.data}))
         .catch(e => dispatch({type: REQUEST_GBB_FAILURE, error: e}));
 
     return dispatch({type: REQUEST_GBB_UPDATE});
