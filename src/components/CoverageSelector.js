@@ -7,13 +7,14 @@ import {gbbRes} from "../__mocks__";
 const CoverageSelection = props =>
         <Form.Row>
             {gbbRes.result.lobData.personalAuto.offerings.filter(offer =>
-                offer.branchCode === props.selectedPackage)[0].coverages.lineCoverages.map(coverage =>
+                offer.branchCode === props.selectedPackage)[0].coverages.lineCoverages.map((coverage, lcKey) =>
                 coverage.terms.length > 0
-                ? <Form.Group as={Col} controlId="formGridState">
+                    ? <Form.Group key={lcKey} as={Col} controlId="formGridState">
                         <Form.Label>{coverage.name}</Form.Label>
-                        <Form.Control as="select">{coverage.terms[0].options.map(option=> <option>{option.name}</option>)}</Form.Control>
-                  </Form.Group>
-                : null
+                        <Form.Control as="select">{coverage.terms[0].options.map((option, optKey) =>
+                            <option key={optKey}>{option.name}</option>)}</Form.Control>
+                    </Form.Group>
+                    : null
             )}
         </Form.Row>;
 
