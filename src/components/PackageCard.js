@@ -8,17 +8,17 @@ const DetailCard = props =>{
     const handleButton = id => id === props.selectedPackage ? 'primary' : 'outline-primary';
     const handleClick = event => props.selectPackage(event.target.id);
     const getButtonText = id => id === props.selectedPackage ? 'Buy Package' : 'Select Package';
+    const {pack} = props;
 
     return (
         <Card>
             <Card.Body className='text-center'>
-                <div className='card-title'>Standard Coverage</div>
-                <div className='monthly-amount'>$112.22/mo</div>
-                <div className='premium-amount'>$660.33 six-month auto premium</div>
+                <div className='card-title'>{pack.branchName}</div>
+                <div className='monthly-amount'>${pack.premium.monthlyPremium.amount}/mo</div>
                 <Button id={props.id} onClick={e => handleClick(e)} variant={handleButton(props.id)}>
                     {getButtonText(props.id)}
                 </Button>
-                <div className='first-amount'>$101.32 first payment</div>
+                <div className='premium-amount'>${pack.premium.totalBeforeTaxes.amount} six-month auto premium</div>
             </Card.Body>
         </Card>
     );

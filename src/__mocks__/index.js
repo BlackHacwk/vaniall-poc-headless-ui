@@ -171,6 +171,7 @@ export const accountDTO = {
         }
     ]
 };
+
 export const gbbRes = {
     "jsonrpc": "2.0",
     "id": "69b6d7d3-5564-4771-9799-bbe822d213a8",
