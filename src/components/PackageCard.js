@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {selectPackage} from "../actions";
 
-const DetailCard = props =>{
+const PackageCard = props =>{
     const handleButton = id => id === props.selectedPackage ? 'primary' : 'outline-primary';
     const handleClick = event => props.selectPackage(event.target.id);
     const getButtonText = id => id === props.selectedPackage ? 'Buy Package' : 'Select Package';
@@ -26,4 +26,4 @@ const DetailCard = props =>{
 
 const mapDispatchToProps = state => ({ selectedPackage: state.selectedPackage });
 
-export default connect(mapDispatchToProps, { selectPackage })(DetailCard);
+export default connect(mapDispatchToProps, { selectPackage })(PackageCard);

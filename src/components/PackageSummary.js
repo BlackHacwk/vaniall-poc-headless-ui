@@ -10,7 +10,7 @@ const PackageSummary = () => (
         <Container fluid={true}>
             <h1 className='title'>Package Selection (GOOD, BETTER, BEST)</h1>
             <CardDeck className='relaxed'>
-                {gbbRes.result.quoteData.offeredQuotes.map(pack => <PackageCard key={pack.branchName} id={pack.branchName} pack={pack} />)}
+                {gbbRes.result.quoteData.offeredQuotes.map(pack => <PackageCard key={pack.branchName} id={pack.branchCode} pack={pack} />)}
             </CardDeck>
             <Form>
                 <CoverageSelection/>
