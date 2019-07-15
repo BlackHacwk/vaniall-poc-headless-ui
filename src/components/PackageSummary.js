@@ -4,14 +4,13 @@ import Container from "react-bootstrap/Container";
 import Form from 'react-bootstrap/Form'
 import PackageCard from "./PackageCard";
 import CoverageSelection from "./CoverageSelector";
+import {gbbRes} from "../__mocks__";
 
 const PackageSummary = () => (
         <Container fluid={true}>
             <h1 className='title'>Package Selection (GOOD, BETTER, BEST)</h1>
             <CardDeck className='relaxed'>
-                <PackageCard id='standard' />
-                <PackageCard id='premium' />
-                <PackageCard id='minimum' />
+                {gbbRes.result.quoteData.offeredQuotes.map(pack => <PackageCard key={pack.branchName} id={pack.branchName} pack={pack} />)}
             </CardDeck>
             <Form>
                 <Form.Row>

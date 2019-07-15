@@ -4,7 +4,7 @@ import DetailCard from "./DetailCard";
 import {connect} from "react-redux";
 
 const AccountSummary = props => (
-    <CardDeck>
+    <CardDeck style={{"paddingTop" : "32px"}}>
         {props.contacts.map(contact => <DetailCard key={contact.accountContactPublicID} contact={contact} />)}
     </CardDeck>
 );

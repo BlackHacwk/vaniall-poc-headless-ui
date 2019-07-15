@@ -9,7 +9,7 @@ import {
     REQUEST_CONTACTS_SUCCESS, REQUEST_GBB_FAILURE, REQUEST_GBB_SUCCESS, REQUEST_GBB_UPDATE,
     REQUEST_MESSAGE_UPDATE,
     SELECT_PACKAGE,
-    SET_CURRENT
+    SET_CURRENT, SET_LICENSE
 } from "./action-types";
 import {api} from "../api";
 import {
@@ -21,6 +21,7 @@ import {
     message_endpoint
 } from "../constants/endpoints";
 import {headers} from "../constants";
+import {accountDTO} from "../__mocks__";
 
 export const setCurrentComponent = tag => dispatch => dispatch({type: SET_CURRENT, payload: tag});
 
@@ -87,6 +88,10 @@ export const requestMessage = (priority,description) => dispatch => {
     return dispatch({type: REQUEST_MESSAGE_UPDATE});
 };
 
+export const setLicense = license => dispatch => {
+    accountDTO.params[0].accountHolder.licenseNumber = license;
+    dispatch({type: SET_LICENSE, payload: license})
+};
 
 export const requestGoodBetterBest = quoteID => dispatch => {
   const data = {
