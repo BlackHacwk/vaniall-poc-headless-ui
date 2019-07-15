@@ -56,6 +56,7 @@ class Flow extends React.Component {
 
     componentDidMount() {
         this.props.requestPolicyContacts("1424066131");
+        this.props.requestGoodBetterBest("1234");
     }
 
     handlePrevClick = () => {

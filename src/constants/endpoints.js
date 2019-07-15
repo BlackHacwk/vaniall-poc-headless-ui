@@ -6,3 +6,4 @@ export const metadata_endpoint ="/gateway/ProducerEngage/common/js/src/config/ui
 export const policy_change_endpoint ="/gatewaypolicychange/policychange";
 export const contact_endpoint ="/gateway/contact";
 export const message_endpoint ="/gateway/activity";
+export const goodBetterBest_endpoint = "/gatewayquote/quote";

@@ -6,13 +6,20 @@ import {
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
     REQUEST_CONTACTS,
     REQUEST_CONTACTS_FAILURE,
-    REQUEST_CONTACTS_SUCCESS,
+    REQUEST_CONTACTS_SUCCESS, REQUEST_GBB_FAILURE, REQUEST_GBB_SUCCESS, REQUEST_GBB_UPDATE,
     REQUEST_MESSAGE_UPDATE,
     SELECT_PACKAGE,
     SET_CURRENT
 } from "./action-types";
 import {api} from "../api";
-import {account_endpoint, contact_endpoint, context_root, host, message_endpoint} from "../constants/endpoints";
+import {
+    account_endpoint,
+    contact_endpoint,
+    context_root,
+    goodBetterBest_endpoint,
+    host,
+    message_endpoint
+} from "../constants/endpoints";
 import {headers} from "../constants";
 
 export const setCurrentComponent = tag => dispatch => dispatch({type: SET_CURRENT, payload: tag});
@@ -80,6 +87,20 @@ export const requestMessage = (priority,description) => dispatch => {
     return dispatch({type: REQUEST_MESSAGE_UPDATE});
 };
 
+
+export const requestGoodBetterBest = (placeholderIDNumber) => dispatch => {
+  const data = {"id":"69b6d7d3-5564-4771-9799-bbe822d213a8","jsonrpc":"2.0","method":"retrieve","params":[{"quoteID":"0002848077","postalCode":"78247","productCode":null,"effectiveDate":null,"gatewayportalnewsubmission":true,"displayYourInfoStep":null,"account":null,"shouldUpdateEffectiveDate":null}]}
+
+    api.post(
+        host + context_root + goodBetterBest_endpoint,
+        data,
+        {headers: headers})
+        .then(res => dispatch({type: REQUEST_GBB_SUCCESS, payload: res.data.result}))
+        .catch(e => dispatch({type: REQUEST_GBB_FAILURE, error: e}));
+
+    return dispatch({type: REQUEST_GBB_UPDATE});
+
+};
 
 // export const requestAccountDetails = accountNumber => dispatch => {
 //     const data = {"id":"a7eb6534-772c-475a-b270-97752998eeec","jsonrpc":"2.0","method":"getAccountDetails","params":[`${accountNumber}`]};
