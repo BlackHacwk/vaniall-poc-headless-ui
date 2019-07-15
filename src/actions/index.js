@@ -9,11 +9,12 @@ import {
     REQUEST_CONTACTS_SUCCESS,
     REQUEST_MESSAGE_UPDATE,
     SELECT_PACKAGE,
-    SET_CURRENT
+    SET_CURRENT, SET_LICENSE
 } from "./action-types";
 import {api} from "../api";
 import {account_endpoint, contact_endpoint, context_root, host, message_endpoint} from "../constants/endpoints";
 import {headers} from "../constants";
+import {accountDTO} from "../__mocks__";
 
 export const setCurrentComponent = tag => dispatch => dispatch({type: SET_CURRENT, payload: tag});
 
@@ -80,6 +81,10 @@ export const requestMessage = (priority,description) => dispatch => {
     return dispatch({type: REQUEST_MESSAGE_UPDATE});
 };
 
+export const setLicense = license => dispatch => {
+    accountDTO.params[0].accountHolder.licenseNumber = license;
+    dispatch({type: SET_LICENSE, payload: license})
+};
 
 // export const requestAccountDetails = accountNumber => dispatch => {
 //     const data = {"id":"a7eb6534-772c-475a-b270-97752998eeec","jsonrpc":"2.0","method":"getAccountDetails","params":[`${accountNumber}`]};

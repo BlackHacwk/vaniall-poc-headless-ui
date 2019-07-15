@@ -12,7 +12,7 @@ import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import {connect} from "react-redux";
 import {requestPolicyContacts, updateAccount} from "../actions";
-import {hardData} from "../__mocks__";
+import {accountDTO} from "../__mocks__";
 
 class Flow extends React.Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class Flow extends React.Component {
                     component: <AccountEdit/>,
                     prev: 'Previous',
                     next: 'Save',
-                    callback: () => this.props.updateAccount(hardData)
+                    callback: () => this.props.updateAccount(accountDTO)
                 },
                 {
                     title: "Account 3",
@@ -109,4 +109,4 @@ class Flow extends React.Component {
     }
 }
 
-export default connect(null, {updateAccount, requestPolicyContacts})(Flow);
+export default connect(state => ({license: state.license}), {updateAccount, requestPolicyContacts})(Flow);

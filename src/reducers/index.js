@@ -5,8 +5,9 @@ import {
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
     REQUEST_CONTACTS_SUCCESS,
     SELECT_PACKAGE,
-    SET_CURRENT
+    SET_CURRENT, SET_LICENSE
 } from "../actions/action-types";
+import {accountDTO} from "../__mocks__";
 
 const navReducer = (state = null, action) => {
     if (action.type === SET_CURRENT)
@@ -46,10 +47,18 @@ const messageReducer = (state = [], action) => {
     return state;
 };
 
+const licenseReducer = (state = null, action) => {
+    if (action.type === SET_LICENSE)
+        return {...accountDTO, params: {accountHolder: {licenseNumber: action.payload}}};
+
+    return state;
+};
+
 export default combineReducers({
     nav: navReducer,
     selectedPackage: packageReducer,
     account: accountReducer,
     contacts: contactReducer,
+    license: licenseReducer,
     message: messageReducer
 });
