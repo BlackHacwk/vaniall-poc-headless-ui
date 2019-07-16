@@ -9,16 +9,17 @@ const PackageCard = props =>{
     const handleClick = e => e.target.id !== props.selectedPackage ? props.selectPackage(e.target.id) : props.buyPackage(e.target.id, props.sessionUUID);
     const getButtonText = id => id === props.selectedPackage ? 'Buy Package' : 'Select Package';
     const {pack} = props;
+    const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
     return (
         <Card>
             <Card.Body className='text-center'>
                 <div className='card-title'>{pack.branchName}</div>
-                <div className='monthly-amount'>${pack.premium.monthlyPremium.amount}/mo</div>
+                <div className='monthly-amount'>{formatter.format(pack.premium.monthlyPremium.amount)}/mo</div>
                 <Button id={props.id} onClick={e => handleClick(e)} variant={handleButton(props.id)}>
                     {getButtonText(props.id)}
                 </Button>
-                <div className='premium-amount'>${pack.premium.totalBeforeTaxes.amount} six-month auto premium</div>
+                <div className='premium-amount'>{formatter.format(pack.premium.totalBeforeTaxes.amount)} six-month auto premium</div>
             </Card.Body>
         </Card>
     );

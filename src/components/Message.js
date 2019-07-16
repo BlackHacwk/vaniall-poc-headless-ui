@@ -7,7 +7,7 @@ import Alert from "react-bootstrap/Alert";
 class Message extends React.Component {
 
     componentWillMount() {
-        this.props.requestMessage("low", "This is a high priority message");
+        this.props.requestMessage("low", "This is a low priority message");
     }
 
     determineStyleToUse = priority => {

@@ -55,17 +55,16 @@ class Flow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestPolicyContacts("1424066131");
-        this.props.requestGoodBetterBest();
+        const {requestPolicyContacts, requestGoodBetterBest} = this.props;
+
+        requestPolicyContacts("1424066131");
+        requestGoodBetterBest();
     }
 
-    handlePrevClick = () => {
-        this.setState(prevState => ({ current: prevState.current -1 }));
-    };
+    handlePrevClick = () => this.setState(prevState => ({ current: prevState.current -1 }));
 
     handleNextClick = callback => {
         this.setState(prevState => ({ current: prevState.current +1 }));
-
         if(callback) callback();
     };
 

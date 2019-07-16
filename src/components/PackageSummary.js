@@ -12,6 +12,7 @@ const PackageSummary = props =>
             <CardDeck className='relaxed'>
                 {props.gbb.result.quoteData.offeredQuotes.map(pack => <PackageCard key={pack.branchName} id={pack.branchCode} pack={pack} />)}
             </CardDeck>
+            <h1 className='title'>Coverages</h1>
             <Form>
                 <CoverageSelection/>
             </Form>

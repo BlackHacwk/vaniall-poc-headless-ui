@@ -14,7 +14,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Navbar bg='primary' variant='dark' onSelect={ tag => this.props.setCurrentComponent(tag)}>
+                <Navbar bg='light' expand='lg' onSelect={ tag => this.props.setCurrentComponent(tag)}>
                     <Navbar.Brand href="#">Ricsurance</Navbar.Brand>
                     <Nav>
                         <Nav.Link href="#summary">Account Summary</Nav.Link>
