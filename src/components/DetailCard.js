@@ -8,12 +8,12 @@ import check from "../check.svg";
 import cap from "../cap.svg";
 
 const CardDetails = props => {
-    if( ! props.contact)
+    const {contact} = props;
+
+    if(! contact)
         return <div>Loading...</div>;
 
     else {
-        const {contact} = props;
-
         return (
             <Card style={{ width: '30rem' }} >
                 <Card.Header>

@@ -1,26 +1,24 @@
 import {combineReducers} from "redux";
 import {
-    REQUEST_ACCOUNT_MESSAGE_SUCCESS,
+    REQUEST_MESSAGE_SUCCESS,
     REQUEST_ACCOUNT_SUCCESS,
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
     REQUEST_CONTACTS_SUCCESS, REQUEST_GBB_SUCCESS,
     SELECT_PACKAGE,
-    SET_CURRENT, SET_LICENSE
+    SET_CURRENT, SET_LICENSE, SET_SESSION_ID
 } from "../actions/action-types";
 import {accountDTO} from "../__mocks__";
 
 const navReducer = (state = null, action) => {
-    if (action.type === SET_CURRENT)
-        return action.payload;
+    if (action.type === SET_CURRENT) return action.payload;
 
     return state;
 };
 
-const packageReducer = (state = null, action) => {
-    if (action.type === SELECT_PACKAGE)
-        return action.payload;
+const packageReducer = (state = "CUSTOM", action) => {
+    if (action.type === SELECT_PACKAGE) return action.payload;
 
-    return "CUSTOM";
+    return state;
 };
 
 const accountReducer = (state = null, action) => {
@@ -33,25 +31,21 @@ const accountReducer = (state = null, action) => {
 };
 
 const contactReducer = (state = [], action) => {
-    if (action.type === REQUEST_CONTACTS_SUCCESS)
-        return action.payload;
+    if (action.type === REQUEST_CONTACTS_SUCCESS) return action.payload;
 
     return state;
 };
 
 
 const messageReducer = (state = [], action) => {
-    if (action.type === REQUEST_ACCOUNT_MESSAGE_SUCCESS)
-        return action.payload;
+    if (action.type === REQUEST_MESSAGE_SUCCESS) return action.payload;
 
     return state;
 };
 
 
 const goodBetterBestReducer = (state={}, action) => {
-    console.log(action);
-    if (action.type === REQUEST_GBB_SUCCESS)
-        return action.payload;
+    if (action.type === REQUEST_GBB_SUCCESS) return action.payload;
 
     return state;
 };
@@ -63,6 +57,13 @@ const licenseReducer = (state = null, action) => {
     return state;
 };
 
+const sessionReducer = (state = null, action) => {
+    if (action.type === SET_SESSION_ID)
+        return action.payload;
+
+    return state;
+};
+
 export default combineReducers({
     nav: navReducer,
     selectedPackage: packageReducer,
@@ -70,5 +71,6 @@ export default combineReducers({
     contacts: contactReducer,
     message: messageReducer,
     gbb : goodBetterBestReducer,
-    license: licenseReducer
+    license: licenseReducer,
+    sessionUUID: sessionReducer
 });

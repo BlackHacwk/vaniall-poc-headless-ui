@@ -2,11 +2,11 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import React from 'react';
 import {connect} from "react-redux";
-import {selectPackage} from "../actions";
+import {buyPackage, selectPackage} from "../actions";
 
 const PackageCard = props =>{
     const handleButton = id => id === props.selectedPackage ? 'primary' : 'outline-primary';
-    const handleClick = event => props.selectPackage(event.target.id);
+    const handleClick = e => e.target.id !== props.selectedPackage ? props.selectPackage(e.target.id) : props.buyPackage(e.target.id, props.sessionUUID);
     const getButtonText = id => id === props.selectedPackage ? 'Buy Package' : 'Select Package';
     const {pack} = props;
 
@@ -24,6 +24,6 @@ const PackageCard = props =>{
     );
 };
 
-const mapDispatchToProps = state => ({ selectedPackage: state.selectedPackage });
+const mapDispatchToProps = state => ({ selectedPackage: state.selectedPackage, sessionUUID: state.sessionUUID });
 
-export default connect(mapDispatchToProps, { selectPackage })(PackageCard);
+export default connect(mapDispatchToProps, { selectPackage, buyPackage })(PackageCard);

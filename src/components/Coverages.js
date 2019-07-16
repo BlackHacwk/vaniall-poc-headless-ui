@@ -3,17 +3,17 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import {connect} from "react-redux";
 
-const CoverageSelection = props =>
+const Coverages = props =>
         <Form.Row>
             {props.gbb.result.lobData.personalAuto.offerings.filter(offer =>
                 offer.branchCode === props.selectedPackage)[0].coverages.lineCoverages.map(coverage =>
                 coverage.terms.length > 0
-                ? <Form.Group as={Col} controlId="formGridState">
+                ? <Form.Group key={coverage.name} as={Col} controlId="formGridState">
                         <Form.Label>{coverage.name}</Form.Label>
-                        <Form.Control as="select">{coverage.terms[0].options.map(option=> <option>{option.name}</option>)}</Form.Control>
+                        <Form.Control as="select">{coverage.terms[0].options.map(option=> <option key={option.name}>{option.name}</option>)}</Form.Control>
                   </Form.Group>
                 : null
             )}
         </Form.Row>;
 
-export default connect(state=> ({selectedPackage: state.selectedPackage, gbb: state.gbb}), null)(CoverageSelection);
+export default connect(state=> ({selectedPackage: state.selectedPackage, gbb: state.gbb}), null)(Coverages);

@@ -3,7 +3,7 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Container from "react-bootstrap/Container";
 import Form from 'react-bootstrap/Form'
 import PackageCard from "./PackageCard";
-import CoverageSelection from "./CoverageSelector";
+import CoverageSelection from "./Coverages";
 import {connect} from "react-redux";
 
 const PackageSummary = props =>
