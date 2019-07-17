@@ -121,12 +121,12 @@ export const buyPackage = (packageCode, gbbData) => dispatch => {
 
 export const requestGoodBetterBest = () => dispatch => {
     const data = {
-        "id": "491413db-0f8d-4f05-94ee-14f9728bc050",
+        "id": "ca0c6948-0156-4678-9ba9-ccadceb5d1c9",
         "jsonrpc": "2.0",
         "method": "retrieve",
         "params": [
             {
-                "quoteID": "0009807598",
+                "quoteID": "0000047635",
                 "postalCode": "78247",
                 "productCode": null,
                 "effectiveDate": null,
