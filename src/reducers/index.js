@@ -1,11 +1,14 @@
 import {combineReducers} from "redux";
 import {
-    REQUEST_MESSAGE_SUCCESS,
+    PREPARE_GBB_DATA,
     REQUEST_ACCOUNT_SUCCESS,
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
-    REQUEST_CONTACTS_SUCCESS, REQUEST_GBB_SUCCESS,
+    REQUEST_CONTACTS_SUCCESS,
+    REQUEST_GBB_SUCCESS,
+    REQUEST_MESSAGE_SUCCESS,
     SELECT_PACKAGE,
-    SET_CURRENT, SET_LICENSE, SET_SESSION_ID
+    SET_CURRENT,
+    SET_LICENSE
 } from "../actions/action-types";
 import {accountDTO} from "../__mocks__";
 
@@ -50,6 +53,12 @@ const goodBetterBestReducer = (state={}, action) => {
     return state;
 };
 
+const gbbDataReducer = (state={}, action) => {
+    if (action.type === PREPARE_GBB_DATA) return action.payload;
+
+    return state;
+};
+
 const licenseReducer = (state = null, action) => {
     if (action.type === SET_LICENSE)
         return {...accountDTO, params: {accountHolder: {licenseNumber: action.payload}}};
@@ -57,12 +66,6 @@ const licenseReducer = (state = null, action) => {
     return state;
 };
 
-const sessionReducer = (state = null, action) => {
-    if (action.type === SET_SESSION_ID)
-        return action.payload;
-
-    return state;
-};
 
 export default combineReducers({
     nav: navReducer,
@@ -71,6 +74,6 @@ export default combineReducers({
     contacts: contactReducer,
     message: messageReducer,
     gbb : goodBetterBestReducer,
+    gbbData: gbbDataReducer,
     license: licenseReducer,
-    sessionUUID: sessionReducer
 });

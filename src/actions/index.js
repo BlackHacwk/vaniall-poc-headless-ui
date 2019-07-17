@@ -1,28 +1,32 @@
 import {
-    REQUEST_MESSAGE_FAILURE,
-    REQUEST_MESSAGE_SUCCESS,
+    BUY_PACKAGE_FAILURE,
+    BUY_PACKAGE_SUCCESS,
+    PREPARE_GBB_DATA,
     REQUEST_ACCOUNT_UPDATE,
     REQUEST_ACCOUNT_UPDATE_FAILURE,
     REQUEST_ACCOUNT_UPDATE_SUCCESS,
+    REQUEST_BUY_PACKAGE,
     REQUEST_CONTACTS,
     REQUEST_CONTACTS_FAILURE,
     REQUEST_CONTACTS_SUCCESS,
     REQUEST_GBB_FAILURE,
     REQUEST_GBB_SUCCESS,
     REQUEST_GBB_UPDATE,
+    REQUEST_MESSAGE_FAILURE,
+    REQUEST_MESSAGE_SUCCESS,
     REQUEST_MESSAGE_UPDATE,
     SELECT_PACKAGE,
     SET_CURRENT,
-    SET_LICENSE, REQUEST_BUY_PACKAGE, BUY_PACKAGE_SUCCESS, BUY_PACKAGE_FAILURE, SET_SESSION_ID
+    SET_LICENSE
 } from "./action-types";
 import {api} from "../api";
 import {
     account_endpoint,
     contact_endpoint,
     context_root,
-    quote_endpoint,
     host,
-    message_endpoint
+    message_endpoint,
+    quote_endpoint
 } from "../constants/endpoints";
 import {headers} from "../constants";
 import {accountDTO, selectPackageBody} from "../__mocks__";
@@ -32,7 +36,13 @@ export const setCurrentComponent = tag => dispatch => dispatch({type: SET_CURREN
 export const selectPackage = type => dispatch => dispatch({type: SELECT_PACKAGE, payload: type});
 
 export const requestPolicyContacts = policyNumber => dispatch => {
-    const data = {"id":"a7eb6534-772c-475a-b270-97752998eeec","jsonrpc":"2.0","method":"getPolicyContactSummaries","params":[policyNumber, [] ,0 ,5]};
+    const data = {
+        "id": "a7eb6534-772c-475a-b270-97752998eeec",
+        "jsonrpc": "2.0",
+        "method": "getPolicyContactSummaries",
+        "params": [policyNumber, [], 0, 5]
+    };
+
     api.post(
         host + context_root + contact_endpoint,
         data,
@@ -56,7 +66,7 @@ export const updateAccount = data => dispatch => {
     return dispatch({type: REQUEST_ACCOUNT_UPDATE});
 };
 
-export const requestMessage = (priority,description) => dispatch => {
+export const requestMessage = (priority, description) => dispatch => {
     const data = {
         "id": "ec907a0c-33d5-427e-9503-3ef0dda7e76d",
         "jsonrpc": "2.0",
@@ -97,34 +107,35 @@ export const setLicense = license => dispatch => {
     dispatch({type: SET_LICENSE, payload: license})
 };
 
-export const buyPackage = (packageCode, sessionUUID) => dispatch => {
+export const buyPackage = (packageCode, gbbData) => dispatch => {
+    const {sessionUUID, quoteId, chosenQuoteId} = gbbData;
     api.post(
         host + context_root + quote_endpoint,
-        selectPackageBody(sessionUUID),
+        selectPackageBody(sessionUUID, quoteId, chosenQuoteId),
         {headers: headers})
         .then(res => dispatch({type: BUY_PACKAGE_SUCCESS, payload: res.data}))
         .catch(e => dispatch({type: BUY_PACKAGE_FAILURE, error: e}));
 
     return dispatch({type: REQUEST_BUY_PACKAGE});
-}
+};
 
 export const requestGoodBetterBest = () => dispatch => {
-  const data = {
-      "id": "69b6d7d3-5564-4771-9799-bbe822d213a8",
-      "jsonrpc": "2.0",
-      "method": "retrieve",
-      "params": [
-          {
-              "quoteID": "0002848077",
-              "postalCode": "78247",
-              "productCode": null,
-              "effectiveDate": null,
-              "gatewayportalnewsubmission": true,
-              "displayYourInfoStep": null,
-              "account": null,
-              "shouldUpdateEffectiveDate": null
-          }]
-  };
+    const data = {
+        "id": "491413db-0f8d-4f05-94ee-14f9728bc050",
+        "jsonrpc": "2.0",
+        "method": "retrieve",
+        "params": [
+            {
+                "quoteID": "0009807598",
+                "postalCode": "78247",
+                "productCode": null,
+                "effectiveDate": null,
+                "gatewayportalnewsubmission": true,
+                "displayYourInfoStep": null,
+                "account": null,
+                "shouldUpdateEffectiveDate": null
+            }]
+    };
 
     api.post(
         host + context_root + quote_endpoint,
@@ -132,7 +143,14 @@ export const requestGoodBetterBest = () => dispatch => {
         {headers: headers})
         .then(res => {
             dispatch({type: REQUEST_GBB_SUCCESS, payload: res.data});
-            dispatch({type: SET_SESSION_ID, payload: res.data.result.sessionUUID});
+            dispatch({
+                type: PREPARE_GBB_DATA,
+                payload: {
+                    sessionUUID: res.data.result.sessionUUID,
+                    quoteID: res.data.result.quoteID,
+                    chosenQuote: res.data.result.bindData.chosenQuote
+                }
+            });
         })
         .catch(e => dispatch({type: REQUEST_GBB_FAILURE, error: e}));
 

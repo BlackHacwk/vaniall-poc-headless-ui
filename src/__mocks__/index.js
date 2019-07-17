@@ -172,14 +172,14 @@ export const accountDTO = {
     ]
 };
 
-export const selectPackageBody = sessionId => ({
+export const selectPackageBody = (sessionId, quoteId, chosenQuoteId) => ({
     "id": "69b6d7d3-5564-4771-9799-bbe822d213a8",
     "jsonrpc": "2.0",
     "method": "bind",
     "params": [
         {
             "sessionUUID": sessionId,
-            "quoteID": "0007057692",
+            "quoteID": quoteId,
             "baseData": {
                 "periodStatus": "Quoted",
                 "accountHolder": {
@@ -7081,7 +7081,7 @@ export const selectPackageBody = sessionId => ({
                 ]
             },
             "bindData": {
-                "chosenQuote": "pc:476",
+                "chosenQuote": chosenQuoteId,
                 "accountNumber": "1840055994",
                 "selectedPaymentPlan": "pctest:2",
                 "contactPhone": "210-123-1234",

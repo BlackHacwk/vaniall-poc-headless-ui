@@ -6,7 +6,7 @@ import {buyPackage, selectPackage} from "../actions";
 
 const PackageCard = props =>{
     const handleButton = id => id === props.selectedPackage ? 'primary' : 'outline-primary';
-    const handleClick = e => e.target.id !== props.selectedPackage ? props.selectPackage(e.target.id) : props.buyPackage(e.target.id, props.sessionUUID);
+    const handleClick = e => e.target.id !== props.selectedPackage ? props.selectPackage(e.target.id) : props.buyPackage(e.target.id, props.gbbData);
     const getButtonText = id => id === props.selectedPackage ? 'Buy Package' : 'Select Package';
     const {pack} = props;
     const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
@@ -25,6 +25,9 @@ const PackageCard = props =>{
     );
 };
 
-const mapDispatchToProps = state => ({ selectedPackage: state.selectedPackage, sessionUUID: state.sessionUUID });
+const mapDispatchToProps = state => ({
+    selectedPackage: state.selectedPackage,
+    gbbData: state.gbbData
+});
 
 export default connect(mapDispatchToProps, { selectPackage, buyPackage })(PackageCard);
