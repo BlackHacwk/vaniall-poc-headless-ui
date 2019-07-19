@@ -17,13 +17,17 @@ const CardDetails = props => {
         return (
             <Card style={{ width: '30rem' }} >
                 <Card.Header>
-                    {contact.displayName} {contact.policyContactRoles.includes('PolicyPriNamedInsured') ? '(account holder)' : ''}
+                    { contact.displayName } { contact.policyContactRoles.includes('PolicyPriNamedInsured') ? '(account holder)' : null }
                 </Card.Header>
                 <Card.Body>
                     <Container fluid={false}>
                         <Row>
                             <Col lg={3}>
-                                <CardImg variant="bottom" src={contact.policyContactRoles.includes('PolicyPriNamedInsured') ? check : cap} height="150px" />
+                                <CardImg variant="bottom" src={
+                                    contact.policyContactRoles.includes('PolicyPriNamedInsured')
+                                    ? check
+                                    : cap
+                                } height="150px" />
                             </Col>
                             <Col>
                                 <div>DOB: {contact.dateOfBirth.day}/{contact.dateOfBirth.month}/{contact.dateOfBirth.year}</div>
