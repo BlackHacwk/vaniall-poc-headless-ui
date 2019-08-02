@@ -15,7 +15,7 @@ class Flow extends React.Component {
         this.state = {
             current: 0,
             pages: [
-                {title: "title", component: <IFrame/>, prev: 'Exit', next: 'Next', callback: null}
+                {title: "Frankensurance", component: <IFrame/>, prev: 'Exit', next: 'Next', callback: null}
             ]
         }
     }
