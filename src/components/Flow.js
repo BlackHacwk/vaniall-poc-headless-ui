@@ -1,18 +1,11 @@
 import React from 'react';
 import Button from "react-bootstrap/Button";
-import AccountSummary from "./AccountSummary";
 import Fade from 'react-bootstrap/Fade'
-import AccountEdit from "./AccountEdit";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Message from "./Message";
-import faker from 'faker';
-import Questionnaire from "./Questionnaire";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import {connect} from "react-redux";
-import {requestGoodBetterBest, requestPolicyContacts, updateAccount} from "../actions";
-import {accountDTO} from "../__mocks__";
 
 class Flow extends React.Component {
     constructor(props) {
@@ -21,44 +14,12 @@ class Flow extends React.Component {
         this.state = {
             current: 0,
             pages: [
-                {title: "Account Review", component: <AccountSummary/>, prev: 'Exit', next: 'Edit', callback: null},
-                {
-                    title: "Account Edit",
-                    component: <AccountEdit/>,
-                    prev: 'Previous',
-                    next: 'Save',
-                    callback: () => this.props.updateAccount(accountDTO)
-                },
-                {
-                    title: "Account 3",
-                    component: <Message title={faker.lorem.sentence()} message={faker.lorem.paragraph()}/>,
-                    prev: 'Previous',
-                    next: 'Next',
-                    callback: null
-                },
-                {
-                    title: "Questionnaire",
-                    component: <Questionnaire questions={[
-                        faker.hacker.phrase(),
-                        faker.hacker.phrase(),
-                        faker.hacker.phrase(),
-                        faker.hacker.phrase(),
-                        faker.hacker.phrase(),
-                        faker.hacker.phrase()
-                    ]}/>,
-                    prev: 'Previous',
-                    next: 'Done',
-                    callback: null
-                },
+                {title: "title", component: <div>content</div>, prev: 'Exit', next: 'Next', callback: null}
             ]
         }
     }
 
     componentDidMount() {
-        const {requestPolicyContacts, requestGoodBetterBest} = this.props;
-
-        requestPolicyContacts("1424066131");
-        requestGoodBetterBest();
     }
 
     handlePrevClick = () => this.setState(prevState => ({ current: prevState.current -1 }));
@@ -109,4 +70,4 @@ class Flow extends React.Component {
     }
 }
 
-export default connect(state => ({license: state.license}), {updateAccount, requestPolicyContacts, requestGoodBetterBest})(Flow);
+export default connect()(Flow);

@@ -7452,7 +7452,7 @@ export const updateAccountBody = {
             "canUserView": true
         }
     ]
-}
+};
 
 export const gbbRes = {
     "jsonrpc": "2.0",
