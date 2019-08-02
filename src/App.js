@@ -4,10 +4,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from "react-bootstrap/Nav";
 import {connect} from 'react-redux'
 import {setCurrentComponent} from "./actions";
+import Flow from "./components/Flow";
 
 class App extends React.Component {
 
-    setCurrentView = tag => tag === "#page1" ? <div>page 1</div> : <div>page 2</div>;
+    setCurrentView = tag => tag === "#page2" ? <div>page 2</div> : <Flow/>;
 
     render() {
         return (

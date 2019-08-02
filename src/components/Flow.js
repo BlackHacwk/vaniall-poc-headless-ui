@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import {connect} from "react-redux";
+import IFrame from "./IFrame";
 
 class Flow extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Flow extends React.Component {
         this.state = {
             current: 0,
             pages: [
-                {title: "title", component: <div>content</div>, prev: 'Exit', next: 'Next', callback: null}
+                {title: "title", component: <IFrame/>, prev: 'Exit', next: 'Next', callback: null}
             ]
         }
     }
